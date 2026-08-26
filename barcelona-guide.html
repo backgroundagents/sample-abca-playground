@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barcelona: Spain's Mediterranean Jewel — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #f5f0e8;
+      --cream:   #faf8f4;
+      --stone:   #e8e0d0;
+      --ink:     #1a1714;
+      --ash:     #6b6560;
+      --teal:    #2a7a6f;
+      --teal-lt: #d5ecea;
+      --coral:   #c9624a;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max-w: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stone);
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .nav__back {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .nav__back:hover { opacity: 0.7; }
+
+    /* ── Hero ── */
+    .guide-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .guide-hero__img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .guide-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .guide-hero__content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 40px;
+      max-width: 860px;
+    }
+    .guide-hero__cat {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .guide-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .guide-hero__meta {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Article ── */
+    .guide-body {
+      padding: 64px 0 96px;
+    }
+    .guide-body .container {
+      max-width: 720px;
+    }
+
+    .guide-intro {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ash);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .guide-section {
+      margin-bottom: 48px;
+    }
+    .guide-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+    .guide-section p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #3d3830;
+      margin-bottom: 16px;
+    }
+
+    .guide-tip {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      margin: 32px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .guide-tip__label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .guide-tip p {
+      font-size: 0.9rem;
+      color: #2a5750;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .guide-city {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    @media (max-width: 600px) {
+      .guide-city { grid-template-columns: 1fr; }
+    }
+
+    .city-card {
+      background: var(--sand);
+      padding: 24px;
+    }
+    .city-card__name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .city-card__desc {
+      font-size: 0.85rem;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .city-card__detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .guide-img-block {
+      margin: 40px 0;
+      overflow: hidden;
+    }
+    .guide-img-block img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+    }
+    .guide-img-block figcaption {
+      font-size: 0.75rem;
+      color: var(--ash);
+      padding: 10px 0 0;
+      font-style: italic;
+    }
+
+    /* ── Back CTA ── */
+    .guide-back-cta {
+      padding: 64px 0;
+      background: var(--sand);
+      text-align: center;
+    }
+    .guide-back-cta h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .guide-back-cta p {
+      font-size: 0.9rem;
+      color: var(--ash);
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--teal); color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Playground</a>
+    <a href="index.html#destinations" class="nav__back">&larr; All destinations</a>
+  </nav>
+
+  <div class="guide-hero">
+    <img class="guide-hero__img" src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1600&q=80" alt="Barcelona, Spain" />
+    <div class="guide-hero__overlay"></div>
+    <div class="guide-hero__content">
+      <p class="guide-hero__cat">City &nbsp;&middot;&nbsp; Spain</p>
+      <h1 class="guide-hero__title">Barcelona:<br/>Spain's Mediterranean jewel</h1>
+      <p class="guide-hero__meta">9 min read &nbsp;&middot;&nbsp; Five-day itinerary</p>
+    </div>
+  </div>
+
+  <section class="guide-body">
+    <div class="container">
+
+      <p class="guide-intro">
+        Where Gothic alleyways open onto sun-drenched plazas, where Gaud&iacute;'s impossible curves rise above a gridded 19th-century city, and where the Mediterranean laps at a shoreline lined with chiringuitos — Barcelona is a city that refuses to be just one thing. It is equal parts medieval, modernist, and utterly contemporary.
+      </p>
+
+      <div class="guide-section">
+        <h2>Why Barcelona?</h2>
+        <p>Few cities combine architecture, food, beaches, and street life as effortlessly as Barcelona. The Catalan capital occupies a privileged position between the mountains and the sea, blessed with a climate that keeps outdoor caf&eacute; culture alive nearly year-round. Its architectural heritage is extraordinary: the Roman walls of the Barri G&ograve;tic, the extravagant Modernista buildings of the Eixample, and above all, Antoni Gaud&iacute;'s masterworks — the Sagrada Fam&iacute;lia, Park G&uuml;ell, Casa Batll&oacute;, and Casa Mil&agrave; — make this one of the world's great cities for walking and looking up.</p>
+        <p>Beyond its built environment, Barcelona thrives on a food culture that ranges from no-frills tapas bars in El Born to Michelin-starred inventions in the Eixample. The city's markets — La Boqueria above all — are theatres of colour and flavour. And when the afternoon heat builds, the beach is never more than a short metro ride away.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Practical tip</p>
+        <p>Book Sagrada Fam&iacute;lia tickets online at least two weeks in advance — timed entry sells out quickly, especially for morning slots when the eastern light floods through the stained glass. The 9:00&ndash;10:00 am window offers the most spectacular interior colours. Allow two hours minimum inside.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>The neighbourhoods</h2>
+        <p>Barcelona is a city of barris, each with a personality as distinct as a separate village. The Barri G&ograve;tic is the ancient heart — a labyrinth of narrow stone lanes, hidden plazas, and medieval churches clustered around the Cathedral of Barcelona. Adjacent El Born is hipper and more polished, with designer boutiques, cocktail bars, and the soaring Basilica of Santa Maria del Mar. The Eixample stretches north in a perfect grid of chamfered blocks, its wide avenues lined with Modernista fa&ccedil;ades and some of the city's best restaurants. Gr&agrave;cia, further uphill, feels like a small town — quieter, bohemian, full of independent shops and neighbourhood plazas where locals gather at dusk.</p>
+      </div>
+
+      <div class="guide-city">
+        <div class="city-card">
+          <h3 class="city-card__name">Sagrada Fam&iacute;lia</h3>
+          <p class="city-card__desc">Gaud&iacute;'s unfinished basilica is Barcelona's defining landmark — a forest of stone columns, kaleidoscopic stained glass, and organic geometry that has been under construction since 1882. The interior is transcendent in morning light.</p>
+          <span class="city-card__detail">Half-day visit</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Barri G&ograve;tic</h3>
+          <p class="city-card__desc">The Gothic Quarter: Roman ruins beneath medieval streets, candlelit plazas, and the grand Cathedral of Barcelona. Get lost in the lanes between Pla&ccedil;a Reial and Pla&ccedil;a Sant Felip Neri for the finest atmosphere.</p>
+          <span class="city-card__detail">Full day on foot</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Park G&uuml;ell</h3>
+          <p class="city-card__desc">Gaud&iacute;'s hilltop garden park offers mosaic-covered terraces, organic stonework, and sweeping views over the city to the sea. The monumental zone requires timed tickets; arrive at opening for the best experience.</p>
+          <span class="city-card__detail">Morning excursion</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">La Barceloneta</h3>
+          <p class="city-card__desc">The old fishermen's quarter turned beach neighbourhood. Narrow streets of colourful laundry give way to a long sandy beach with chiringuitos, seafood restaurants, and the Frank Gehry fish sculpture glinting in the sun.</p>
+          <span class="city-card__detail">Afternoon &amp; evening</span>
+        </div>
+      </div>
+
+      <figure class="guide-img-block">
+        <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65ef8e?w=1200&q=80" alt="Interior of Sagrada Familia" />
+        <figcaption>Morning light through the stained glass of the Sagrada Fam&iacute;lia — the eastern windows glow in warm reds and oranges during the first hours after opening.</figcaption>
+      </figure>
+
+      <div class="guide-section">
+        <h2>When to go</h2>
+        <p>May, June, September, and October are ideal — warm and sunny without the extreme heat and peak crowds of July and August. Spring brings jacaranda blossoms to the Eixample's avenues and comfortable temperatures for long days of walking. Autumn offers golden light, warm seas for swimming, and the return of the city's cultural season. Winter is mild by European standards (10&ndash;15&deg;C) and brings fewer tourists, making it excellent for museums and restaurants.</p>
+        <p>August is when many locals leave the city for their own holidays; some neighbourhood restaurants close, though the tourist infrastructure runs at full capacity. The heat can be intense (35&deg;C+), pushing activity to mornings and evenings.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Where to stay</h2>
+        <p>El Born and the Barri G&ograve;tic place you in the historic heart — atmospheric, walkable, and close to the city's best tapas bars and nightlife. The Eixample offers wider streets, Modernista architecture at every turn, and excellent transport links; hotels here tend to be newer and more spacious. For beach access, La Barceloneta and the Port Ol&iacute;mpic area deliver morning swims and seafood lunches within minutes. Gr&agrave;cia suits those who prefer a quieter, more local feel with easy access to Park G&uuml;ell.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Budget guide</p>
+        <p>Barcelona is mid-range by western European standards. Budget hostels start at &euro;25&ndash;40 per night; mid-range hotels in the Eixample run &euro;120&ndash;200. A men&uacute; del d&iacute;a lunch (three courses with wine) costs &euro;12&ndash;18; dinner at a good restaurant &euro;35&ndash;60 per person. Daily budget excluding accommodation: &euro;50&ndash;80 for modest spending; &euro;100&ndash;180 for the full experience including entrance fees and wine.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Food &amp; drink</h2>
+        <p>Barcelona's food scene is one of Europe's richest. Start mornings at La Boqueria market on La Rambla for fresh fruit, jam&oacute;n ib&eacute;rico, and a caf&eacute; con leche at one of the market bars. For tapas, the bars of El Born and the streets around Carrer Blai in Poble-sec serve pintxos and small plates at extraordinary value. Pa amb tom&agrave;quet — bread rubbed with ripe tomato, olive oil, and salt — is the city's simplest and most essential dish.</p>
+        <p>Catalan cuisine extends far beyond tapas: look for arr&ograve;s negre (black rice with squid ink), escalivada (smoky roasted vegetables), and crema catalana (the local cr&egrave;me br&ucirc;l&eacute;e). The vermouth revival has made mid-afternoon vermut a social ritual — order it with olives and anchovies at any traditional bar.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="guide-back-cta">
+    <div class="container">
+      <h3>Discover more guides</h3>
+      <p>From Santorini's volcanic cliffs to Norway's deep fjords — there's always another journey waiting.</p>
+      <a href="index.html#guides" class="btn">Browse all guides</a>
+    </div>
+  </div>
+
+</body>
+</html>
