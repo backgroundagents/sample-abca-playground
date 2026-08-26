@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuscany: Italy's Renaissance Heartland — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #f5f0e8;
+      --cream:   #faf8f4;
+      --stone:   #e8e0d0;
+      --ink:     #1a1714;
+      --ash:     #6b6560;
+      --teal:    #2a7a6f;
+      --teal-lt: #d5ecea;
+      --coral:   #c9624a;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max-w: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stone);
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .nav__back {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .nav__back:hover { opacity: 0.7; }
+
+    /* ── Hero ── */
+    .guide-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .guide-hero__img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .guide-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .guide-hero__content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 40px;
+      max-width: 860px;
+    }
+    .guide-hero__cat {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .guide-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .guide-hero__meta {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Article ── */
+    .guide-body {
+      padding: 64px 0 96px;
+    }
+    .guide-body .container {
+      max-width: 720px;
+    }
+
+    .guide-intro {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ash);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .guide-section {
+      margin-bottom: 48px;
+    }
+    .guide-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+    .guide-section p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #3d3830;
+      margin-bottom: 16px;
+    }
+
+    .guide-tip {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      margin: 32px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .guide-tip__label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .guide-tip p {
+      font-size: 0.9rem;
+      color: #2a5750;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .guide-city {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    @media (max-width: 600px) {
+      .guide-city { grid-template-columns: 1fr; }
+    }
+
+    .city-card {
+      background: var(--sand);
+      padding: 24px;
+    }
+    .city-card__name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .city-card__desc {
+      font-size: 0.85rem;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .city-card__detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .guide-img-block {
+      margin: 40px 0;
+      overflow: hidden;
+    }
+    .guide-img-block img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+    }
+    .guide-img-block figcaption {
+      font-size: 0.75rem;
+      color: var(--ash);
+      padding: 10px 0 0;
+      font-style: italic;
+    }
+
+    /* ── Back CTA ── */
+    .guide-back-cta {
+      padding: 64px 0;
+      background: var(--sand);
+      text-align: center;
+    }
+    .guide-back-cta h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .guide-back-cta p {
+      font-size: 0.9rem;
+      color: var(--ash);
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--teal); color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Playground</a>
+    <a href="index.html#destinations" class="nav__back">← All destinations</a>
+  </nav>
+
+  <div class="guide-hero">
+    <img class="guide-hero__img" src="https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1600&q=80" alt="Tuscany, Italy" />
+    <div class="guide-hero__overlay"></div>
+    <div class="guide-hero__content">
+      <p class="guide-hero__cat">Region &nbsp;·&nbsp; Central Italy</p>
+      <h1 class="guide-hero__title">Tuscany:<br/>Italy's Renaissance heartland</h1>
+      <p class="guide-hero__meta">9 min read &nbsp;·&nbsp; One-week itinerary</p>
+    </div>
+  </div>
+
+  <section class="guide-body">
+    <div class="container">
+
+      <p class="guide-intro">
+        Rolling hills striped with cypress trees, medieval hilltop towns wrapped in golden stone, and some of the finest art and architecture ever created by human hands — Tuscany is the landscape that defined the Western imagination of Italy, and it has lost none of its power to enchant.
+      </p>
+
+      <div class="guide-section">
+        <h2>Why Tuscany?</h2>
+        <p>Tuscany occupies a singular place in European culture. This is the region that gave the world the Renaissance — Florence alone contains more masterpieces per square metre than most countries possess in their entirety. But Tuscany's appeal extends far beyond its museums: the countryside is a living canvas of vineyards, olive groves, and stone farmhouses that has changed remarkably little since the Medici era.</p>
+        <p>The region rewards slow travel above all. A week spent moving between Florence, Siena, and the smaller hill towns — with long lunches in village trattorias, afternoons in quiet churches, and evenings watching the light turn the landscape amber — is one of the great European journeys. This is not a place to rush.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Practical tip</p>
+        <p>A car is essential for exploring the Tuscan countryside between towns. Roads are well-maintained and scenic, but fuel stations can be scarce in rural areas. Book accommodation with parking — finding a spot in hilltop towns like San Gimignano or Montepulciano without a reserved space is near-impossible in season. Alternatively, base yourself in Florence or Siena and take day trips by bus.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>The cities &amp; towns</h2>
+        <p>Tuscany's urban centres range from the global art capital of Florence to perfectly preserved medieval towns that seem untouched by time. Siena's shell-shaped Piazza del Campo is one of Europe's most beautiful public spaces; San Gimignano's skyline of medieval towers rises from the surrounding vineyards like a stone forest; and Lucca's intact Renaissance walls now serve as an elevated garden promenade circling the old city.</p>
+      </div>
+
+      <div class="guide-city">
+        <div class="city-card">
+          <h3 class="city-card__name">Florence</h3>
+          <p class="city-card__desc">The birthplace of the Renaissance and home to the Uffizi, the Duomo, and Michelangelo's David. Overwhelming in the best sense — allow at least three full days and book major museums in advance.</p>
+          <span class="city-card__detail">3 nights recommended</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Siena</h3>
+          <p class="city-card__desc">Florence's historic rival, with a magnificent Gothic cathedral and the fan-shaped Piazza del Campo — site of the Palio horse race held twice each summer. More intimate and walkable than Florence.</p>
+          <span class="city-card__detail">2 nights recommended</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">San Gimignano</h3>
+          <p class="city-card__desc">The "Medieval Manhattan" — a tiny walled town crowned by 14 surviving stone towers, once a symbol of rival families' wealth. Best explored early morning before the day-trip buses arrive.</p>
+          <span class="city-card__detail">Day trip or 1 night</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Val d'Orcia</h3>
+          <p class="city-card__desc">The iconic Tuscan landscape of rolling hills, lone cypress trees, and golden light — a UNESCO World Heritage site. Base yourself in Pienza or Montepulciano and drive the winding roads between villages.</p>
+          <span class="city-card__detail">2 nights recommended</span>
+        </div>
+      </div>
+
+      <figure class="guide-img-block">
+        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1200&q=80" alt="Val d'Orcia countryside with cypress trees" />
+        <figcaption>The Val d'Orcia at golden hour — the landscape that launched a thousand postcards, and somehow even more beautiful in person than in photographs.</figcaption>
+      </figure>
+
+      <div class="guide-section">
+        <h2>When to go</h2>
+        <p>April through June and September through October are ideal — warm days, manageable crowds, and the landscape at its most photogenic. Spring brings wildflowers to the hillsides; autumn delivers harvest season, with grape-picking in Chianti and truffle hunting in the forests south of Siena. The light in both seasons is extraordinary — soft, golden, and seemingly designed for photography.</p>
+        <p>July and August are hot (often exceeding 35°C in Florence) and crowded, though the countryside remains more pleasant than the cities. Winter is quiet and atmospheric — Florence's museums are blissfully uncrowded, and the hill towns take on a moody, cinematic quality in the mist.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Where to stay</h2>
+        <p>Tuscany offers everything from converted medieval monasteries and aristocratic villas to working wine estates with guest rooms. In Florence, stay in the Oltrarno neighbourhood for a more local atmosphere away from the tourist centre. In the countryside, an agriturismo (farm stay) is the quintessential Tuscan experience — stone buildings among olive groves, often with a pool and home-cooked dinners using the estate's own produce. Castello di Ama, Borgo San Felice, and Rosewood Castiglion del Bosco represent the luxury end.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Budget guide</p>
+        <p>Tuscany ranges from affordable to extravagant. Simple agriturismos and guesthouses start at €80–120 per night; boutique hotels in Florence and Siena run €200–400. Meals at village trattorias cost €20–35 per person; Michelin-starred dining ranges from €80–200. Daily budget excluding accommodation: €50–80 for modest spending; €120–200 for the full experience including wine tastings and museum entries.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Food &amp; wine</h2>
+        <p>Tuscan cuisine is famously simple — built on extraordinary ingredients treated with restraint. Bistecca alla fiorentina (a thick-cut T-bone from Chianina cattle, grilled over charcoal) is the region's signature dish. Ribollita (a hearty bread and vegetable soup), pici (hand-rolled thick pasta), and crostini with chicken liver are staples of every traditional trattoria. The bread is unsalted — a centuries-old tradition that initially surprises but makes perfect sense alongside the region's bold, salty cured meats.</p>
+        <p>The wines need little introduction: Chianti Classico, Brunello di Montalcino, and Vino Nobile di Montepulciano are among Italy's greatest reds. Many estates welcome visitors for tastings — Antinori nel Chianti Classico and Castello Banfi are architecturally stunning; smaller family producers like Isole e Olena and Il Poggione offer more intimate experiences.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="guide-back-cta">
+    <div class="container">
+      <h3>Discover more guides</h3>
+      <p>From Santorini's volcanic shores to Norway's midnight fjords — there's always another journey waiting.</p>
+      <a href="index.html#guides" class="btn">Browse all guides</a>
+    </div>
+  </div>
+
+</body>
+</html>
