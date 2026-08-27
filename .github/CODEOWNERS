@@ -2,10 +2,20 @@
 
 ## Default owners for everything in the repo
 
-*                                   @aws-samples/coding-agents-admin @aws-samples/coding-agents-maintainers
+*                                   @scottschreckengaust 
+.github                             @scottschreckengaust
+CODE_OF_CONDUCT.md                  @scottschreckengaust
+CONTRIBUTING.md                     @scottschreckengaust
+LICENSE                             @scottschreckengaust
+README.md                           @scottschreckengaust
 
-index.html                          @aws-samples/coding-agents-admin @aws-samples/coding-agents-maintainers @backgroundagents
+index.html                          @scottschreckengaust
+destinations.html                   @scottschreckengaust
+*.css                               @scottschreckengaust
+
+*-guides.html                       @ayushtr-aws @backgroundagents @ClintEastman02 @isadeks @scottschreckengaust
+*-region.html                       @ayushtr-aws @backgroundagents @ClintEastman02 @isadeks @scottschreckengaust
 
 ## File must end with CODEOWNERS file
 
-.github/CODEOWNERS                  @aws-samples/coding-agents-admin
+.github/CODEOWNERS                  @scottschreckengaust
