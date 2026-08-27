@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vienna: Austria's Imperial Capital — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #f5f0e8;
+      --cream:   #faf8f4;
+      --stone:   #e8e0d0;
+      --ink:     #1a1714;
+      --ash:     #6b6560;
+      --teal:    #2a7a6f;
+      --teal-lt: #d5ecea;
+      --coral:   #c9624a;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max-w: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stone);
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .nav__back {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .nav__back:hover { opacity: 0.7; }
+
+    /* ── Hero ── */
+    .guide-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .guide-hero__img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .guide-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .guide-hero__content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 40px;
+      max-width: 860px;
+    }
+    .guide-hero__cat {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .guide-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .guide-hero__meta {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Article ── */
+    .guide-body {
+      padding: 64px 0 96px;
+    }
+    .guide-body .container {
+      max-width: 720px;
+    }
+
+    .guide-intro {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ash);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .guide-section {
+      margin-bottom: 48px;
+    }
+    .guide-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+    .guide-section p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #3d3830;
+      margin-bottom: 16px;
+    }
+
+    .guide-tip {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      margin: 32px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .guide-tip__label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .guide-tip p {
+      font-size: 0.9rem;
+      color: #2a5750;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .guide-city {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    @media (max-width: 600px) {
+      .guide-city { grid-template-columns: 1fr; }
+    }
+
+    .city-card {
+      background: var(--sand);
+      padding: 24px;
+    }
+    .city-card__name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .city-card__desc {
+      font-size: 0.85rem;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .city-card__detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .guide-img-block {
+      margin: 40px 0;
+      overflow: hidden;
+    }
+    .guide-img-block img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+    }
+    .guide-img-block figcaption {
+      font-size: 0.75rem;
+      color: var(--ash);
+      padding: 10px 0 0;
+      font-style: italic;
+    }
+
+    /* ── Back CTA ── */
+    .guide-back-cta {
+      padding: 64px 0;
+      background: var(--sand);
+      text-align: center;
+    }
+    .guide-back-cta h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .guide-back-cta p {
+      font-size: 0.9rem;
+      color: var(--ash);
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--teal); color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Playground</a>
+    <a href="index.html#destinations" class="nav__back">&larr; All destinations</a>
+  </nav>
+
+  <div class="guide-hero">
+    <img class="guide-hero__img" src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1600&q=80" alt="Vienna, Austria" />
+    <div class="guide-hero__overlay"></div>
+    <div class="guide-hero__content">
+      <p class="guide-hero__cat">City &nbsp;&middot;&nbsp; Austria</p>
+      <h1 class="guide-hero__title">Vienna:<br/>Austria's imperial capital</h1>
+      <p class="guide-hero__meta">8 min read &nbsp;&middot;&nbsp; Four-day itinerary</p>
+    </div>
+  </div>
+
+  <section class="guide-body">
+    <div class="container">
+
+      <p class="guide-intro">
+        A city where gilded palaces stand beside brutalist housing blocks, where the coffeehouse is a democratic institution and the opera is a nightly ritual, Vienna is a place that wears its imperial past lightly while quietly leading in quality of life. It is both museum and living city &mdash; a place that takes pleasure seriously.
+      </p>
+
+      <div class="guide-section">
+        <h2>Why Vienna?</h2>
+        <p>Vienna is one of those rare cities where grandeur does not feel distant. The Ringstra&szlig;e &mdash; the great boulevard that replaced the old city walls &mdash; is lined with monumental buildings: the Opera House, Parliament, the Kunsthistorisches Museum, the Burgtheater. Yet the city's true character lives in its quieter corners: the cobbled lanes of the Innere Stadt, the leafy calm of the Volksgarten, the neighbourhood Beisl where locals eat Tafelspitz and drink Gr&uuml;ner Veltliner at wooden tables.</p>
+        <p>Music runs through the city like a second nervous system. Mozart, Beethoven, Schubert, Brahms, Mahler, and Strauss all lived and worked here; today the Vienna Philharmonic, the Staatsoper, and the Musikverein carry that tradition forward at the highest level. But Vienna is equally a city of visual art &mdash; from the Klimt and Schiele holdings at the Belvedere and Leopold Museum to the contemporary programme at mumok and the Secession building.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Practical tip</p>
+        <p>Standing-room tickets at the Wiener Staatsoper cost just &euro;3&ndash;4 and go on sale 80 minutes before curtain. Arrive early to queue &mdash; tie a scarf to the railing to mark your spot, as is local tradition &mdash; and you can hear world-class opera for less than the price of a coffee.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>The neighbourhoods</h2>
+        <p>The Innere Stadt (1st district) is the historic core, ringed by the Ringstra&szlig;e and anchored by Stephansdom, Vienna's Gothic cathedral. Its tight streets hold Baroque churches, hidden courtyards, and some of the city's most storied coffeehouses. The MuseumsQuartier, just outside the Ring, clusters world-class museums and caf&eacute;s in a repurposed imperial stable complex. Neubau (7th district) is the creative quarter &mdash; independent boutiques, natural wine bars, and galleries fill its grid of 19th-century streets. Leopoldstadt (2nd district), across the Danube Canal, has emerged as a food and nightlife destination, anchored by the Karmelitermarkt and the green expanse of the Prater park.</p>
+      </div>
+
+      <div class="guide-city">
+        <div class="city-card">
+          <h3 class="city-card__name">Sch&ouml;nbrunn Palace</h3>
+          <p class="city-card__desc">The Habsburgs' summer residence: 1,441 rooms of Rococo splendour set within formal gardens, a hilltop Gloriette, and Europe's oldest zoo. The Grand Tour takes you through the state apartments where Maria Theresa held court and Mozart performed as a child.</p>
+          <span class="city-card__detail">Half-day visit</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Kunsthistorisches Museum</h3>
+          <p class="city-card__desc">One of the world's great art museums, built to house the Habsburg collections. Bruegel's peasant scenes, Vermeer's Art of Painting, Raphael, Titian, and Vel&aacute;zquez &mdash; all beneath a ceiling painted by Klimt himself.</p>
+          <span class="city-card__detail">Half-day visit</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Naschmarkt</h3>
+          <p class="city-card__desc">Vienna's most famous market stretches along the Wienzeile with stalls selling spices, cheese, olives, Middle Eastern specialities, and fresh seafood. Saturday brings a flea market at the western end; the surrounding streets are lined with caf&eacute;s and restaurants.</p>
+          <span class="city-card__detail">Morning excursion</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Belvedere</h3>
+          <p class="city-card__desc">Two Baroque palaces separated by sculpted gardens descending toward the city skyline. The Upper Belvedere houses Austria's most important art collection, including Klimt's golden masterpiece The Kiss and works by Schiele and Kokoschka.</p>
+          <span class="city-card__detail">Afternoon visit</span>
+        </div>
+      </div>
+
+      <figure class="guide-img-block">
+        <img src="https://images.unsplash.com/photo-1609856878074-cf31a82c1ae0?w=1200&q=80" loading="lazy" alt="Interior of Vienna State Opera House with ornate gold ceiling and red velvet seats" />
+        <figcaption>The Vienna State Opera &mdash; one of the world's leading opera houses, where standing-room tickets allow anyone to experience world-class performances beneath gilded ceilings and crystal chandeliers.</figcaption>
+      </figure>
+
+      <div class="guide-section">
+        <h2>When to go</h2>
+        <p>April through June and September through October are ideal. Spring brings blossoms to the Volksgarten's rose beds and mild temperatures perfect for walking the city. Autumn is golden &mdash; the vineyards on the city's edge turn amber, and the cultural season begins in earnest. Summer (July&ndash;August) is warm (25&ndash;30&deg;C) and lively, with open-air concerts and festivals, though some institutions take a summer pause. Winter has its own magic: Christmas markets fill the squares from mid-November, and the ball season (January&ndash;February) transforms the city into a whirl of waltzes.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Where to stay</h2>
+        <p>The Innere Stadt puts you within walking distance of everything &mdash; the Opera, Stephansdom, the Hofburg, and the best coffeehouses. Hotels here range from grand (the Sacher, the Imperial) to design-forward boutiques in converted palais. The MuseumsQuartier and Neubau (6th&ndash;7th districts) offer a more local feel with easy access to galleries, restaurants, and nightlife; mid-range hotels and apartments abound. Leopoldstadt, across the canal, is excellent for food lovers and those who want a neighbourhood atmosphere with a short tram ride to the centre.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Budget guide</p>
+        <p>Vienna is comparable to other major western European capitals. Hostels start at &euro;25&ndash;40 per night; mid-range hotels in the centre run &euro;130&ndash;220. A classic Viennese lunch (Schnitzel, potato salad, beer) costs &euro;14&ndash;20 at a neighbourhood Beisl; dinner at a good restaurant &euro;40&ndash;70 per person. Daily budget excluding accommodation: &euro;50&ndash;80 for comfortable sightseeing; &euro;100&ndash;160 including concerts and wine.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Food &amp; drink</h2>
+        <p>Viennese food culture is built on the coffeehouse and the Beisl (traditional tavern). A proper Viennese breakfast means a Melange (the local caf&eacute; au lait) with a Semmel and jam at a marble-topped table in a grand caf&eacute; &mdash; Caf&eacute; Central, Hawelka, or Sperl. For lunch, the city's signature is Wiener Schnitzel: a thin veal cutlet, breaded and fried golden, served with a wedge of lemon and lingonberry jam. Tafelspitz (boiled beef with apple-horseradish sauce) is the other essential dish.</p>
+        <p>Vienna's wine culture is unique among European capitals: vineyards grow within the city limits, and Heurigen (wine taverns) in districts like Grinzing and Neustift serve the new vintage alongside cold buffets in leafy garden courtyards. In the centre, natural wine bars in Neubau and Leopoldstadt pour Austrian varietals &mdash; Gr&uuml;ner Veltliner, Blaufr&auml;nkisch, Zweigelt &mdash; by the glass alongside modern small plates.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="guide-back-cta">
+    <div class="container">
+      <h3>Discover more guides</h3>
+      <p>From Barcelona's Modernista avenues to Norway's deep fjords — there's always another journey waiting.</p>
+      <a href="index.html#guides" class="btn">Browse all guides</a>
+    </div>
+  </div>
+
+</body>
+</html>
