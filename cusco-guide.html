@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ancient Peaks & Sacred Valleys: Cusco & Machu Picchu — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #f5f0e8;
+      --cream:   #faf8f4;
+      --stone:   #e8e0d0;
+      --ink:     #1a1714;
+      --ash:     #6b6560;
+      --teal:    #2a7a6f;
+      --teal-lt: #d5ecea;
+      --coral:   #c9624a;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max-w: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stone);
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .nav__back {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .nav__back:hover { opacity: 0.7; }
+
+    /* ── Hero ── */
+    .guide-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .guide-hero__img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .guide-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .guide-hero__content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 40px;
+      max-width: 860px;
+    }
+    .guide-hero__cat {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .guide-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .guide-hero__meta {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Article ── */
+    .guide-body {
+      padding: 64px 0 96px;
+    }
+    .guide-body .container {
+      max-width: 720px;
+    }
+
+    .guide-intro {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ash);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .guide-section {
+      margin-bottom: 48px;
+    }
+    .guide-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+    .guide-section p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #3d3830;
+      margin-bottom: 16px;
+    }
+
+    .guide-tip {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      margin: 32px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .guide-tip__label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .guide-tip p {
+      font-size: 0.9rem;
+      color: #2a5750;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .guide-city {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    @media (max-width: 600px) {
+      .guide-city { grid-template-columns: 1fr; }
+    }
+
+    .city-card {
+      background: var(--sand);
+      padding: 24px;
+    }
+    .city-card__name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .city-card__desc {
+      font-size: 0.85rem;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .city-card__detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .guide-img-block {
+      margin: 40px 0;
+      overflow: hidden;
+    }
+    .guide-img-block img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+    }
+    .guide-img-block figcaption {
+      font-size: 0.75rem;
+      color: var(--ash);
+      padding: 10px 0 0;
+      font-style: italic;
+    }
+
+    /* ── Back CTA ── */
+    .guide-back-cta {
+      padding: 64px 0;
+      background: var(--sand);
+      text-align: center;
+    }
+    .guide-back-cta h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .guide-back-cta p {
+      font-size: 0.9rem;
+      color: var(--ash);
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--teal); color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Playground</a>
+    <a href="index.html#guides" class="nav__back">&larr; All guides</a>
+  </nav>
+
+  <div class="guide-hero">
+    <img class="guide-hero__img" src="https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1600&q=80" alt="Machu Picchu ruins at sunrise, Peru" />
+    <div class="guide-hero__overlay"></div>
+    <div class="guide-hero__content">
+      <p class="guide-hero__cat">Culture &amp; History &nbsp;&middot;&nbsp; Peru</p>
+      <h1 class="guide-hero__title">Ancient peaks &amp; sacred valleys:<br/>Cusco &amp; Machu Picchu</h1>
+      <p class="guide-hero__meta">14 min read &nbsp;&middot;&nbsp; One-week itinerary</p>
+    </div>
+  </div>
+
+  <section class="guide-body">
+    <div class="container">
+
+      <p class="guide-intro">
+        A city built by the Inca empire at 3,400 metres, a sacred river valley brimming with ruins and terraces, and one of the most celebrated archaeological sites on Earth perched above the clouds. Cusco and Machu Picchu reward the traveller with history, altitude, and wonder at every turn.
+      </p>
+
+      <div class="guide-section">
+        <h2>Why Cusco &amp; Machu Picchu?</h2>
+        <p>Cusco was once the navel of the Inca world &mdash; the political, religious, and cultural centre of the largest empire in pre-Columbian America. Today it is a living city layered over its own past: colonial churches sit on Inca foundations, cobblestone streets follow the lines of ancient waterways, and the surrounding Sacred Valley is dotted with ruins that rival anything in the Mediterranean.</p>
+        <p>Machu Picchu needs no introduction, but seeing it in person still delivers something photographs cannot convey. The sheer improbability of its location &mdash; a granite ridge between two peaks, hidden from the valley below &mdash; makes it feel like a place invented rather than discovered. A week combining Cusco, the Sacred Valley, and the citadel itself is one of South America&rsquo;s essential journeys.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Practical tip</p>
+        <p>Altitude sickness is real at 3,400 m. Fly into Cusco and spend at least two full days acclimatising before attempting any strenuous hikes. Drink plenty of water, eat lightly, and try coca tea (mate de coca) &mdash; locals swear by it. If heading to Machu Picchu first (at 2,430 m), consider descending to the Sacred Valley early for an easier adjustment.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Cusco: the Imperial City</h2>
+        <p>Start your journey in the Plaza de Armas, Cusco&rsquo;s grand central square flanked by the Cathedral and the Jesuit Church of La Compa&ntilde;&iacute;a. From here the city unfolds in every direction: the fortress of Sacsayhuam&aacute;n looms on the hill above, the artisan quarter of San Blas climbs in narrow lanes to the northeast, and the mercado central overflows with tropical fruits, fresh juices, and local cheeses.</p>
+        <p>Allow two days for the city itself. Walk the twelve-angled stone on Hatun Rumiyoc street &mdash; a masterpiece of drystone Inca masonry that has survived centuries of earthquakes. Visit the Qoricancha (Temple of the Sun), whose perfectly fitted walls were once sheathed in gold. In the evenings, Cusco&rsquo;s restaurant scene blends Andean ingredients with modern technique &mdash; alpaca tataki, quinoa risotto, and pisco sours at altitude.</p>
+      </div>
+
+      <div class="guide-city">
+        <div class="city-card">
+          <h3 class="city-card__name">Machu Picchu</h3>
+          <p class="city-card__desc">The lost citadel of the Incas, set on a saddle between Huayna Picchu and Machu Picchu Mountain. Arrive at first light to watch the mist lift off terraces that have stood for over 500 years.</p>
+          <span class="city-card__detail">Day 4&ndash;5 highlight</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Sacred Valley</h3>
+          <p class="city-card__desc">The Urubamba River carves a fertile valley between Pisac and Ollantaytambo, lined with Inca terraces, salt mines, and traditional markets. A full day here is essential.</p>
+          <span class="city-card__detail">Day 3 excursion</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Ollantaytambo</h3>
+          <p class="city-card__desc">A living Inca town with continuous occupation since the 13th century. Massive temple ruins overlook the village, and the train to Aguas Calientes departs from here.</p>
+          <span class="city-card__detail">Gateway to Machu Picchu</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Sacsayhuam&aacute;n</h3>
+          <p class="city-card__desc">A colossal fortress above Cusco built from limestone blocks weighing up to 200 tonnes. The zigzag walls are an engineering marvel that defies easy explanation.</p>
+          <span class="city-card__detail">Day 2 highlight</span>
+        </div>
+      </div>
+
+      <figure class="guide-img-block">
+        <img src="https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1200&q=80" alt="View over the Sacred Valley from Inca terraces near Pisac, Peru" />
+        <figcaption>The Sacred Valley stretches between Cusco and Machu Picchu &mdash; a landscape of terraced hillsides, rushing rivers, and Inca ruins at every turn.</figcaption>
+      </figure>
+
+      <div class="guide-section">
+        <h2>The Inca Trail</h2>
+        <p>The classic four-day Inca Trail remains the most dramatic way to arrive at Machu Picchu. The route passes through cloud forest, over the 4,215 m Dead Woman&rsquo;s Pass, and past a chain of lesser-known ruins before the Sun Gate reveal on the final morning. Permits are limited to 500 people per day (including porters and guides) and sell out months in advance &mdash; book six months ahead for peak season (May&ndash;September).</p>
+        <p>Shorter alternatives include the two-day Inca Trail (starting at Km 104) and the Salkantay Trek, a wilder five-day route through glacial valleys that doesn&rsquo;t require a permit. For those short on time, the train from Ollantaytambo to Aguas Calientes takes 90 minutes and runs through spectacular gorge scenery.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>When to go</h2>
+        <p>The dry season runs May through October, with June to August being peak tourist months. Skies are clearest then, but nights are cold at altitude. The shoulder months of April and November offer fewer crowds with generally fair weather. The wet season (December&ndash;February) brings afternoon downpours but also lush green landscapes and smaller visitor numbers &mdash; the Inca Trail closes for maintenance every February.</p>
+        <p>Machu Picchu can be visited year-round. Morning mist is actually more common in the dry season, creating those iconic photographs of the citadel emerging from clouds. Aim for a first-entry ticket (from 6:00 AM) regardless of season.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Where to stay</h2>
+        <p>In Cusco, the San Blas neighbourhood is the most atmospheric base &mdash; boutique hotels in converted colonial houses with interior courtyards, many built directly on Inca walls. For luxury, the Belmond Palacio Nazarenas occupies a former convent with an oxygen-enriched room system to ease altitude effects.</p>
+        <p>In the Sacred Valley, Tambo del Inka and Explora Valle Sagrado offer countryside retreats at a lower (and more comfortable) altitude. At Machu Picchu, the only on-site option is the Belmond Sanctuary Lodge at the gate; most visitors stay in Aguas Calientes and take the early bus up.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Budget guide</p>
+        <p>Machu Picchu entry costs approximately PEN 152 (USD 40) for foreign adults. The Inca Trail permit plus guided trek runs USD 600&ndash;900 depending on operator and group size. Mid-range hotels in Cusco average USD 80&ndash;150 per night. Budget travellers can manage on USD 50&ndash;70 per day with hostels, local meals, and colectivo transport. A comfortable one-week trip typically runs USD 1,500&ndash;2,500 per person including flights within Peru.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Food &amp; culture</h2>
+        <p>Cusco&rsquo;s food scene is one of South America&rsquo;s best. Try cuy (roasted guinea pig) for the full cultural experience, or stick with lomo saltado (stir-fried beef), aji de gallina (creamy chicken stew), and fresh ceviche. The city&rsquo;s craft beer scene has exploded, and pisco sours flow freely in every plaza-side bar.</p>
+        <p>Don&rsquo;t miss the Mercado San Pedro for a cheap and authentic lunch &mdash; sit at the juice stalls for freshly blended tropical fruit, or order a bowl of soup from the comida section. In the Sacred Valley, look for chicha (fermented corn beer) served from homes marked with a red flag on a pole &mdash; a tradition unchanged since Inca times.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="guide-back-cta">
+    <div class="container">
+      <h3>Discover more guides</h3>
+      <p>From Patagonia's glaciers to Norway's fjords &mdash; there's always another journey waiting.</p>
+      <a href="index.html#guides" class="btn">Browse all guides</a>
+    </div>
+  </div>
+
+</body>
+</html>
