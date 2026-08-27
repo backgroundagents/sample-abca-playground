@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruges: Belgium's Medieval Masterpiece — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #f5f0e8;
+      --cream:   #faf8f4;
+      --stone:   #e8e0d0;
+      --ink:     #1a1714;
+      --ash:     #6b6560;
+      --teal:    #2a7a6f;
+      --teal-lt: #d5ecea;
+      --coral:   #c9624a;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max-w: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stone);
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .nav__back {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .nav__back:hover { opacity: 0.7; }
+
+    /* ── Hero ── */
+    .guide-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .guide-hero__img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .guide-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .guide-hero__content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 40px;
+      max-width: 860px;
+    }
+    .guide-hero__cat {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .guide-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .guide-hero__meta {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Article ── */
+    .guide-body {
+      padding: 64px 0 96px;
+    }
+    .guide-body .container {
+      max-width: 720px;
+    }
+
+    .guide-intro {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ash);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .guide-section {
+      margin-bottom: 48px;
+    }
+    .guide-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+    .guide-section p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #3d3830;
+      margin-bottom: 16px;
+    }
+
+    .guide-tip {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      margin: 32px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .guide-tip__label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .guide-tip p {
+      font-size: 0.9rem;
+      color: #2a5750;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .guide-city {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    @media (max-width: 600px) {
+      .guide-city { grid-template-columns: 1fr; }
+    }
+
+    .city-card {
+      background: var(--sand);
+      padding: 24px;
+    }
+    .city-card__name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .city-card__desc {
+      font-size: 0.85rem;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .city-card__detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .guide-img-block {
+      margin: 40px 0;
+      overflow: hidden;
+    }
+    .guide-img-block img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+    }
+    .guide-img-block figcaption {
+      font-size: 0.75rem;
+      color: var(--ash);
+      padding: 10px 0 0;
+      font-style: italic;
+    }
+
+    /* ── Back CTA ── */
+    .guide-back-cta {
+      padding: 64px 0;
+      background: var(--sand);
+      text-align: center;
+    }
+    .guide-back-cta h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .guide-back-cta p {
+      font-size: 0.9rem;
+      color: var(--ash);
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--teal); color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Playground</a>
+    <a href="index.html#destinations" class="nav__back">&larr; All destinations</a>
+  </nav>
+
+  <div class="guide-hero">
+    <img class="guide-hero__img" src="https://images.unsplash.com/photo-1491557345352-5929e343eb89?w=1600&q=80" alt="Medieval brick buildings along a canal in Bruges, Belgium" />
+    <div class="guide-hero__overlay"></div>
+    <div class="guide-hero__content">
+      <p class="guide-hero__cat">City &nbsp;&middot;&nbsp; Belgium</p>
+      <h1 class="guide-hero__title">Bruges:<br/>Belgium's medieval masterpiece</h1>
+      <p class="guide-hero__meta">8 min read &nbsp;&middot;&nbsp; Three-day itinerary</p>
+    </div>
+  </div>
+
+  <section class="guide-body">
+    <div class="container">
+
+      <p class="guide-intro">
+        A city of winding canals, cobblestone lanes, and step-gabled houses that look unchanged since the Middle Ages &mdash; Bruges is the kind of place where every turn reveals a postcard view. Once one of Europe's wealthiest trading ports, this Flemish gem now enchants visitors with its perfectly preserved Gothic architecture, world-class chocolate, and a quietude that larger cities lost long ago.
+      </p>
+
+      <div class="guide-section">
+        <h2>Why Bruges?</h2>
+        <p>Bruges (Brugge in Dutch) is often called the "Venice of the North," and the comparison is apt: a network of canals threads through the medieval centre, crossed by graceful stone bridges and lined with brick fa&ccedil;ades that glow golden in low light. The entire historic centre is a UNESCO World Heritage Site, and unlike many medieval cities, Bruges never suffered major war damage &mdash; what you see today is largely authentic, not reconstructed.</p>
+        <p>Beyond its beauty, Bruges is a city of sensory pleasures. Belgian chocolate reaches its apotheosis here, with artisan chocolatiers on nearly every street. The beer culture is equally refined: the city is home to De Halve Maan, a family brewery operating since 1856, and hundreds of caf&eacute;s serve Trappist ales and local lambics. Add Flemish Primitive masterpieces in intimate museums, lace-making traditions that survive in quiet workshops, and a food scene rooted in hearty Flemish classics, and you have a city that rewards slow, attentive exploration.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Practical tip</p>
+        <p>Bruges is compact enough to explore entirely on foot &mdash; the walk from the train station to the Markt takes only 15 minutes. Rent a bike from the station for day trips along the canal paths to Damme, a pretty village 7 km northeast. Boat tours on the canals depart from multiple points in the centre and last 30 minutes; go early morning or late afternoon to avoid queues.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>The landmarks</h2>
+        <p>The Markt is the beating heart of Bruges: a vast medieval square surrounded by guild houses and dominated by the Belfry, an 83-metre tower that has watched over the city since the 13th century. Climb its 366 steps for panoramic views over the red rooftops and flat Flemish countryside beyond. A few streets south, the Burg square is more intimate and arguably more beautiful, flanked by the ornate Gothic Town Hall and the Basilica of the Holy Blood, which houses a relic said to contain drops of Christ's blood brought back from the Crusades.</p>
+        <p>The Groeninge Museum holds an extraordinary collection of Flemish Primitive painting &mdash; works by Jan van Eyck, Hans Memling, and Gerard David that were created in Bruges during the city's golden age. The nearby Church of Our Lady contains Michelangelo's Madonna and Child, one of the few works by the master to leave Italy during his lifetime.</p>
+      </div>
+
+      <div class="guide-city">
+        <div class="city-card">
+          <h3 class="city-card__name">The Markt &amp; Belfry</h3>
+          <p class="city-card__desc">The central square of Bruges, ringed by colourful guild houses and horse-drawn carriages. The medieval Belfry tower offers a challenging climb rewarded with sweeping views across the city and surrounding polders.</p>
+          <span class="city-card__detail">Half-day visit</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Canal Quarter</h3>
+          <p class="city-card__desc">The winding waterways south of the Burg, flanked by weeping willows and centuries-old almshouses. The Rozenhoedkaai viewpoint is the most photographed spot in Belgium &mdash; arrive at dawn for mirror-still reflections.</p>
+          <span class="city-card__detail">Leisurely morning</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Begijnhof</h3>
+          <p class="city-card__desc">A tranquil walled garden founded in 1245, once home to a community of religious women. Today Benedictine nuns live here in whitewashed houses surrounding a tree-shaded green &mdash; peaceful even in peak season.</p>
+          <span class="city-card__detail">Quiet afternoon</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">De Halve Maan Brewery</h3>
+          <p class="city-card__desc">The last active brewery in the historic centre, producing Brugse Zot and Straffe Hendrik. The guided tour ends on a rooftop terrace with a fresh glass and city views. An underground beer pipeline connects it to the bottling plant outside town.</p>
+          <span class="city-card__detail">Afternoon tour</span>
+        </div>
+      </div>
+
+      <figure class="guide-img-block">
+        <img src="https://images.unsplash.com/photo-1558551649-e44c8f992010?w=1200&q=80" loading="lazy" alt="Bruges canal lined with medieval brick buildings and a stone bridge" />
+        <figcaption>A quiet stretch of canal in Bruges, where medieval brick houses lean over the water and stone bridges connect cobbled lanes &mdash; a scene that has scarcely changed in five hundred years.</figcaption>
+      </figure>
+
+      <div class="guide-section">
+        <h2>When to go</h2>
+        <p>April through June and September through October are ideal. Spring brings daffodils to the Begijnhof, mild temperatures (12&ndash;18&deg;C), and fewer crowds than summer. Autumn offers golden light on the canals, cosy pub evenings, and the start of mussel season. Summer (July&ndash;August) is the busiest period; the city can feel crowded midday, though early mornings and evenings remain atmospheric.</p>
+        <p>Winter has its own magic: the Bruges Christmas market transforms the Markt and Simon Stevinplein into a fairyland of lights, mulled wine, and ice skating. December weekends are busy, but midweek visits in January and February offer near-solitude in the museums and the quietest canal walks of the year.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Where to stay</h2>
+        <p>The historic centre is compact and almost entirely pedestrianised, so location matters less than in larger cities &mdash; everywhere is walkable. Hotels and B&amp;Bs along the canals between the Markt and the Begijnhof offer the most romantic settings: think exposed beams, canal views, and breakfast rooms in medieval cellars. The area around 't Zand square is slightly more modern and well-connected to the station. For something quieter, the streets north of the Markt toward the Dampoort are residential and peaceful, with excellent small restaurants.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Budget guide</p>
+        <p>Bruges is moderately priced by western European standards. Budget hostels start at &euro;25&ndash;35 per night; charming B&amp;Bs in the centre run &euro;90&ndash;150. A lunch of moules-frites costs &euro;18&ndash;25; dinner at a quality Flemish restaurant &euro;35&ndash;55 per person. Daily budget excluding accommodation: &euro;40&ndash;70 for modest spending; &euro;80&ndash;140 for the full experience including museum entries, a brewery tour, and Belgian beer.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Food &amp; drink</h2>
+        <p>Flemish cuisine is hearty, satisfying, and ideally suited to a city where the weather invites lingering indoors. Moules-frites (mussels with fries) is the iconic dish, served in black pots with crusty bread for mopping up the broth &mdash; try them steamed in white wine, cream, or Belgian beer. Stoofvlees (carbonnade flamande) is a rich beef stew braised in dark ale, sweet and savoury in equal measure. For a lighter lunch, look for shrimp croquettes: crisp golden shells hiding a creamy filling of tiny North Sea grey shrimp.</p>
+        <p>Belgian chocolate needs no introduction, but in Bruges it reaches another level. Visit The Chocolate Line for avant-garde flavours, or Dumon and Sweertvaegher for traditional pralines made by hand. And of course, the frites: Belgian fries are double-fried in beef tallow for an impossibly crisp exterior, served in a paper cone with a generous dollop of mayonnaise or andalouse sauce.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="guide-back-cta">
+    <div class="container">
+      <h3>Discover more guides</h3>
+      <p>From Barcelona's sun-drenched plazas to Norway's deep fjords — there's always another journey waiting.</p>
+      <a href="index.html#guides" class="btn">Browse all guides</a>
+    </div>
+  </div>
+
+</body>
+</html>
