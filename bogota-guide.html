@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colombia's Vibrant Capital: Bogotá — Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:    #f5f0e8;
+      --cream:   #faf8f4;
+      --stone:   #e8e0d0;
+      --ink:     #1a1714;
+      --ash:     #6b6560;
+      --teal:    #2a7a6f;
+      --teal-lt: #d5ecea;
+      --coral:   #c9624a;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max-w: 800px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a   { color: inherit; text-decoration: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      background: rgba(250,248,244,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--stone);
+    }
+    .nav__logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+    }
+    .nav__back {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+    .nav__back:hover { opacity: 0.7; }
+
+    /* ── Hero ── */
+    .guide-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 420px;
+      overflow: hidden;
+    }
+    .guide-hero__img {
+      height: 100%;
+      object-fit: cover;
+    }
+    .guide-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    }
+    .guide-hero__content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 48px 40px;
+      max-width: 860px;
+    }
+    .guide-hero__cat {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .guide-hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .guide-hero__meta {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    /* ── Article ── */
+    .guide-body {
+      padding: 64px 0 96px;
+    }
+    .guide-body .container {
+      max-width: 720px;
+    }
+
+    .guide-intro {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ash);
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--stone);
+    }
+
+    .guide-section {
+      margin-bottom: 48px;
+    }
+    .guide-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+    .guide-section p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: #3d3830;
+      margin-bottom: 16px;
+    }
+
+    .guide-tip {
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      margin: 32px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .guide-tip__label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .guide-tip p {
+      font-size: 0.9rem;
+      color: #2a5750;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .guide-city {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    @media (max-width: 600px) {
+      .guide-city { grid-template-columns: 1fr; }
+    }
+
+    .city-card {
+      background: var(--sand);
+      padding: 24px;
+    }
+    .city-card__name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .city-card__desc {
+      font-size: 0.85rem;
+      color: var(--ash);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .city-card__detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .guide-img-block {
+      margin: 40px 0;
+      overflow: hidden;
+    }
+    .guide-img-block img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+    }
+    .guide-img-block figcaption {
+      font-size: 0.75rem;
+      color: var(--ash);
+      padding: 10px 0 0;
+      font-style: italic;
+    }
+
+    /* ── Back CTA ── */
+    .guide-back-cta {
+      padding: 64px 0;
+      background: var(--sand);
+      text-align: center;
+    }
+    .guide-back-cta h3 {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .guide-back-cta p {
+      font-size: 0.9rem;
+      color: var(--ash);
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover { background: var(--teal); color: white; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Playground</a>
+    <a href="index.html#guides" class="nav__back">← All guides</a>
+  </nav>
+
+  <div class="guide-hero">
+    <img class="guide-hero__img" src="https://images.unsplash.com/photo-1568225540856-d6d27febe3ad?w=1600&q=80" alt="Colourful streets of La Candelaria, Bogotá" />
+    <div class="guide-hero__overlay"></div>
+    <div class="guide-hero__content">
+      <p class="guide-hero__cat">Culture &nbsp;·&nbsp; Colombia</p>
+      <h1 class="guide-hero__title">Colombia's vibrant capital:<br/>Bogotá</h1>
+      <p class="guide-hero__meta">10 min read &nbsp;·&nbsp; Four-day itinerary</p>
+    </div>
+  </div>
+
+  <section class="guide-body">
+    <div class="container">
+
+      <p class="guide-intro">
+        Perched at 2,640 metres in the Andes, Bogotá is a sprawling, energetic capital where colonial churches sit beside bold street art, world-class museums neighbour bustling market halls, and every neighbourhood has its own rhythm. It is a city that rewards curiosity at every turn.
+      </p>
+
+      <div class="guide-section">
+        <h2>Why Bogotá?</h2>
+        <p>Colombia's capital is one of South America's most dynamic cities — a place where history, art, and gastronomy collide at altitude. The historic district of La Candelaria is a labyrinth of cobblestone lanes lined with vivid murals and colonial-era architecture. A few blocks away, the Museo del Oro houses the world's largest collection of pre-Hispanic gold artefacts, an astonishing 55,000 pieces that trace millennia of indigenous craftsmanship.</p>
+        <p>Beyond the museums, Bogotá is a city that lives outdoors. Every Sunday, over 120 kilometres of roads close to traffic for Ciclovía, turning the city into one vast cycling boulevard. The surrounding Eastern Hills offer hiking trails with sweeping views over the urban grid, while the cafés of Chapinero serve some of the finest single-origin coffee you will ever taste.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Practical tip</p>
+        <p>Bogotá sits at high altitude — give yourself a day to acclimatise before tackling steep hikes like Monserrate. Drink plenty of water and go easy on alcohol the first night. The city's weather earns it the nickname "the fridge" among Colombians: expect cool days (14–18°C) and rain in the afternoons, so carry a light jacket and umbrella year-round.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Neighbourhoods to explore</h2>
+        <p>Bogotá is a city of distinct barrios, each with its own character. Spending a day in each gives you four entirely different experiences of the capital — from centuries-old plazas to cutting-edge culinary scenes.</p>
+      </div>
+
+      <div class="guide-city">
+        <div class="city-card">
+          <h3 class="city-card__name">La Candelaria</h3>
+          <p class="city-card__desc">The historic heart of the city. Wander streets alive with murals, visit the Botero Museum and the Gold Museum, and pause for a hot chocolate with cheese at a traditional café.</p>
+          <span class="city-card__detail">Day 1 — History &amp; art</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Chapinero</h3>
+          <p class="city-card__desc">Bogotá's creative and gastronomic hub. Craft breweries, specialty coffee roasters, independent bookshops, and some of the city's most innovative restaurants cluster along Carrera 7.</p>
+          <span class="city-card__detail">Day 2 — Food &amp; nightlife</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Usaquén</h3>
+          <p class="city-card__desc">A former colonial village swallowed by the city's growth, now a leafy enclave of boutique shops and weekend flea markets set around a quiet central plaza.</p>
+          <span class="city-card__detail">Day 3 — Markets &amp; brunch</span>
+        </div>
+        <div class="city-card">
+          <h3 class="city-card__name">Teusaquillo</h3>
+          <p class="city-card__desc">An architectural gem of English-style houses and Art Deco facades. Home to the Simón Bolívar Park — Bogotá's answer to Central Park — and excellent local bakeries.</p>
+          <span class="city-card__detail">Day 4 — Parks &amp; architecture</span>
+        </div>
+      </div>
+
+      <figure class="guide-img-block">
+        <img src="https://images.unsplash.com/photo-1595781572981-d63151b232ed?w=1200&q=80" alt="Aerial view of Bogotá with the Andes in the background" />
+        <figcaption>Bogotá stretches across a high-altitude savanna, backed by the green slopes of the Eastern Andes — a metropolis where urban energy meets mountain air.</figcaption>
+      </figure>
+
+      <div class="guide-section">
+        <h2>When to go</h2>
+        <p>Bogotá has no real seasons — temperatures hover between 7°C and 18°C year-round. The drier months of December to March and July to August see less afternoon rain and more sunshine, making them marginally more pleasant for walking. However, there is no bad time to visit; the city's museums, restaurants, and indoor attractions are excellent rain or shine.</p>
+        <p>If you time your visit for a Sunday, Ciclovía transforms the city. Millions of residents take to the car-free streets on foot, bike, and roller skates — it is one of the world's great urban spectacles and completely free to join.</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Where to stay</h2>
+        <p>La Candelaria puts you closest to the major sights and is ideal for first-time visitors who want to walk everywhere. Boutique hotels in restored colonial houses offer character and charm. Chapinero suits those who prioritise food and nightlife — it is Bogotá's most cosmopolitan district with excellent transport links. Usaquén is quieter and greener, perfect for families or those seeking a village-like atmosphere within the city.</p>
+        <p>TransMilenio (the bus rapid transit system) connects all major neighbourhoods, and ride-hailing apps work reliably throughout the city. Taxis are affordable but always use official yellow cabs or apps rather than hailing unmarked cars.</p>
+      </div>
+
+      <div class="guide-tip">
+        <p class="guide-tip__label">Budget guide</p>
+        <p>Bogotá is excellent value. A comfortable mid-range hotel runs COP 250,000–450,000 (USD 60–110) per night. Street food lunches (bandeja paisa, arepas, empanadas) cost COP 12,000–25,000 (USD 3–6). A fine-dining tasting menu at one of the city's acclaimed restaurants (Leo, El Chato, Celele) averages COP 200,000–350,000 (USD 50–85) per person. Museum entry is often free or under COP 20,000 (USD 5).</p>
+      </div>
+
+      <div class="guide-section">
+        <h2>Food &amp; coffee</h2>
+        <p>Colombia is the world's third-largest coffee producer, and Bogotá is where the best beans end up. Specialty cafés in Chapinero and La Candelaria serve single-origin pour-overs that rival anything in Melbourne or Tokyo. Ask for a <em>tinto</em> (black coffee) at any corner stall for the everyday Colombian experience, or sit down at a third-wave roaster for a curated flight of regional varieties.</p>
+        <p>The food scene has exploded in recent years. Traditional dishes — <em>ajiaco</em> (chicken and potato soup with cream and capers), <em>bandeja paisa</em>, and <em>arepas de choclo</em> — remain essential eating. But a new generation of chefs is reinterpreting Colombian ingredients with global techniques, earning Bogotá multiple spots on Latin America's 50 Best Restaurants list.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="guide-back-cta">
+    <div class="container">
+      <h3>Discover more guides</h3>
+      <p>From Patagonia's granite towers to Kyoto's bamboo groves — there's always another journey waiting.</p>
+      <a href="index.html#guides" class="btn">Browse all guides</a>
+    </div>
+  </div>
+
+</body>
+</html>
